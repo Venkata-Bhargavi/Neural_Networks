@@ -1,6 +1,9 @@
 # Neural_Networks
 
 To simulate mcculloch pitts neuron
+
+Set up the environment and install all required libraries using `pip install -r requirements.txt`
+
 In main.py change input patterns if required and run `python main.py` in terminal or run the main.py file in IDE like PyCharm
 
 ## Output:
