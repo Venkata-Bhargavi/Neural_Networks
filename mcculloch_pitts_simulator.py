@@ -7,6 +7,13 @@ def generate_binary_input(size):
     return np.random.choice([0, 1], size=size)
 
 def plot_simulation(input_pattern, bias_weight, threshold):
+    '''
+
+    :param input_pattern: input patterns based on chosen size
+    :param bias_weight: selected bias
+    :param threshold: selected threshold
+    :return: this function does not return anything explicitly but writes the result on the application
+    '''
     input_size = len(input_pattern) + 1  # Include bias
     neuron_initializer = NeuronInitializer()
 
