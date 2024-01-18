@@ -43,7 +43,7 @@ class McCullochPittsNeuron:
 
         weighted_sum = np.dot(weights[:-1], inputs) + weights[-1]  # Directly add bias term to the weighted sum
         output = 1 if weighted_sum >= threshold else 0
-        return output
+        return output,weighted_sum
 
 
 
