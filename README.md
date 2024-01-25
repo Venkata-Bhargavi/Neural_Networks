@@ -43,6 +43,16 @@ To run the application in terminal use the following commands
 
 Code available in branch - "develop_HW3_perceptron_train"
 
+**Details**:
+
+All code files are available inside the directory `perceptron_for_logistic_regression` 
+
+`helpers.py` : Classes and common functions used to initialize perceptrop, update weights, forward propogation activation function and creating image datasets
+
+`dataset_preparation.py` : Uses the functions from helpers.py and store the images in _"dataset_handwritten_variations"_ and  _"test_images"_ folders. Creates train and test csv files as well
+
+`main.py` : Initializes the perceptron and trains the perceptron using the dataset created from previous files
+
 To execute the program
 
 - `pip install -r requirements.txt`
