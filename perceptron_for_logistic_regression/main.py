@@ -19,15 +19,16 @@ print("Initialized bias:", perceptron.bias)
 
 # Define a custom converter function to safely convert string to list
 def safe_string_to_list(string):
+    '''
+
+    :param string: string which has list as string
+    :return: string
+    '''
     try:
         return ast.literal_eval(string)
     except (SyntaxError, ValueError):
         return string
 
-# 'dataset' should have columns 'pixel_matrix' containing pixel values and 'label' containing labels
-
-# dataset = pd.read_csv("training_data.csv")
-# dataset = pd.read_csv("training_data.csv", converters={"pixel_matrix": safe_string_to_list})
 
 # Define a custom converter function to convert string representation of lists to actual lists
 def parse_pixel_matrix(pixel_matrix_str):
@@ -55,10 +56,6 @@ np.random.shuffle(indices)
 pixel_matrices = pixel_matrices[indices]
 labels = labels[indices]
 
-# Split data into training and test sets (e.g., 80% training, 20% test)
-# split_index = int(0.8 * len(labels))
-# train_inputs, test_inputs = pixel_matrices[:split_index], pixel_matrices[split_index:]
-# train_labels, test_labels = labels[:split_index], labels[split_index:]
 
 # Split data into training and test sets (80% training, 20% test)
 train_inputs, test_inputs, train_labels, test_labels = train_test_split(pixel_matrices, labels, test_size=0.2, stratify=labels)
@@ -68,19 +65,37 @@ print("Train inputs shape:", train_inputs.shape)
 print("Test inputs shape:", test_inputs.shape)
 print("Train labels shape:", train_labels.shape)
 print("Test labels shape:", test_labels.shape)
-# print(f"LAbels check: {(test_labels)}, {train_labels}")
 
 
 # Train the perceptron
-perceptron.train(train_inputs, train_labels, epochs=50, learning_rate=0.05)
+perceptron.train(train_inputs, train_labels, epochs=1000, learning_rate=0.1)
+print("Training is successful!")
 
 # Test the perceptron
 correct_predictions = 0
 for input_data, label in zip(test_inputs, test_labels):
     output = perceptron.forward_propagation(input_data)
-    predicted_label = 1 if output >= 0.5 else 0  # Assuming binary classification
+    predicted_label = np.argmax(output)  # Get the index of the highest probability
+    print(f"\nHere are the predicted probabilities: {output}, Predicted Labels: {predicted_label}, Actual Label: {label}")
+
     if predicted_label == label:
         correct_predictions += 1
 
 accuracy = correct_predictions / len(test_labels)
-print("Test Accuracy:", accuracy)
+print("Validation Accuracy:", accuracy)
+
+# -------------------------------------- Model Training & Validation is completed ! ---------------------------------
+
+# -------------------------------------- Lets test the Model with few images ! ---------------------------------
+
+# Read the CSV file with the custom converter function
+test_dataset = pd.read_csv("test_data_without_labels.csv", converters={"pixel_matrix": parse_pixel_matrix})
+print("---------Test Results------------")
+# Extract pixel matrices and labels from the dataset
+pixel_matrices = test_dataset['pixel_matrix'].values
+file_name = test_dataset['image_file_name'].values
+
+for input_data, filename in zip(pixel_matrices, file_name):
+    output = perceptron.forward_propagation(input_data)
+    predicted_label = np.argmax(output)
+    print(f"\nHere is the predicted label: {predicted_label} --> for filename: {filename}")
