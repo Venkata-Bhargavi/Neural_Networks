@@ -14,5 +14,7 @@ print("Varied Handwritten-like dataset with labels and pixel matrices generated 
 
 # Generate test images for testing the trained perceptron
 test_dataset = generate_test_images(num_images=5)
+test_dataset.to_csv("test_data_without_labels.csv")
+
 
 print("Test images generated successfully!")

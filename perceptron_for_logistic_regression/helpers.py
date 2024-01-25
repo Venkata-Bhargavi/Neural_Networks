@@ -1,61 +1,48 @@
 from PIL import Image, ImageDraw, ImageFilter
 import numpy as np
 import os
-import cv2
 import pandas as pd
 
 
-## updated
-
 class Perceptron:
-    def __init__(self, input_size, activation_function="sigmoid"):
+    def __init__(self, input_size):
         self.input_size = input_size
-        self.weights = np.random.randn(input_size)
-        self.bias = np.random.randn()
-        self.activation_function = activation_function
+        self.weights = np.random.randn(input_size, 10)  # 10 output neurons for 10 classes
+        self.bias = np.random.randn(10)  # One bias term for each output neuron
 
     def initialize_parameters(self):
-        self.weights = np.random.randn(self.input_size)
-        self.bias = 0 #np.random.randn()
+        self.weights = np.random.randn(self.input_size, 10)
+        self.bias = np.random.randn(10)
 
-    def sigmoid(self, x):
-        return 1 / (1 + np.exp(-x))
 
-    def sigmoid_derivative(self, x):
-        return x * (1 - x)
-
-    def activation(self, x):
-        if self.activation_function == "sigmoid":
-            return self.sigmoid(x)
-        else:
-            raise NotImplementedError("Activation function not implemented.")
-
-    def activation_derivative(self, x):
-        if self.activation_function == "sigmoid":
-            return self.sigmoid_derivative(x)
-        else:
-            raise NotImplementedError("Activation function derivative not implemented.")
+    def softmax(self, x):
+        # If input is one-dimensional, convert it to a column vector
+        if len(x.shape) == 1:
+            x = x.reshape(1, -1)
+        exp_values = np.exp(x - np.max(x, axis=1, keepdims=True))
+        return exp_values / np.sum(exp_values, axis=1, keepdims=True)
 
     def forward_propagation(self, inputs):
         weighted_sum = np.dot(inputs, self.weights) + self.bias
-        output = self.activation(weighted_sum)
+        output = self.softmax(weighted_sum)
         return output
 
     def calculate_loss(self, predicted, target):
-        # Mean Squared Error (MSE) loss
-        return np.mean((predicted - target) ** 2)
+        # Categorical cross-entropy loss
+        return -np.mean(target * np.log(predicted))
+
 
     def calculate_gradient(self, inputs, output, target):
-        error = target - output
-        gradient = self.activation_derivative(output)
-        delta = error * gradient
-        d_weights = np.dot(inputs.T, delta)
-        d_bias = np.sum(delta)
+        error = output - target
+        if len(inputs.shape) == 1:  # If inputs are 1D, reshape to 2D array
+            inputs = inputs.reshape(1, -1)
+        d_weights = np.dot(inputs.T, error)
+        d_bias = np.sum(error, axis=0)
         return d_weights, d_bias
 
     def update_parameters(self, d_weights, d_bias, learning_rate):
-        self.weights += learning_rate * d_weights
-        self.bias += learning_rate * d_bias
+        self.weights -= learning_rate * d_weights
+        self.bias -= learning_rate * d_bias
 
     def train(self, inputs, targets, epochs=1000, learning_rate=0.1):
         for epoch in range(epochs):
@@ -74,12 +61,19 @@ class Perceptron:
                 self.update_parameters(d_weights, d_bias, learning_rate)
 
             # Print average loss for each epoch
-            if epoch % 5 == 0:
+            if epoch % 100 == 0:
                 average_loss = total_loss / len(inputs)
                 print(f"Epoch {epoch}: Average Loss = {average_loss}")
 
-# Function to create variations of handwritten numbers with noise, shift, blur, and rotation
+
+
 def generate_varied_handwritten_number_images_with_labels(number, num_variations=10):
+    '''
+    function to generate hand written images with 1 different variations
+    :param number: required number
+    :param num_variations: no of variations for training
+    :return: dataframe
+    '''
     data = []
 
     for i in range(num_variations):
@@ -87,20 +81,13 @@ def generate_varied_handwritten_number_images_with_labels(number, num_variations
         draw = ImageDraw.Draw(image)
 
         # You can customize the font, position, and other parameters
-        draw.text((5, 5), str(number), fill=0)  # Draw the number in black
-
-        # Add some noise to make it look handwritten
-        array_image = np.array(image)
-        noise = np.random.normal(0, 20, array_image.shape)
-        handwritten_image = np.clip(array_image + noise, 0, 255).astype(np.uint8)
+        draw.text((10, 10), str(number), fill=0)  # Draw the number in black
 
         # Shift pixels randomly
         shift_x, shift_y = np.random.randint(-2, 3, 2)
+        handwritten_image = np.array(image)
         handwritten_image = np.roll(handwritten_image, shift_x, axis=1)
         handwritten_image = np.roll(handwritten_image, shift_y, axis=0)
-
-        # Apply blur
-        # handwritten_image = cv2.GaussianBlur(handwritten_image, (3, 3), 0)
 
         # Rotate image
         rotation_angle = np.random.uniform(-10, 10)
@@ -124,10 +111,13 @@ def generate_varied_handwritten_number_images_with_labels(number, num_variations
     return df
 
 
-
-
 # Function to create test images without labels
 def generate_test_images(num_images=5):
+    '''
+
+    :param num_images: no of images to generate
+    :return: dataframe with text dataset
+    '''
     test_data = []
 
     # Create directory to store test images if it doesn't exist
@@ -139,20 +129,13 @@ def generate_test_images(num_images=5):
         draw = ImageDraw.Draw(image)
 
         # You can customize the font, position, and other parameters
-        draw.text((5, 5), str(np.random.randint(0, 10)), fill=0)  # Draw a random number (0 to 9) in black
-
-        # Add some noise to make it look handwritten
-        array_image = np.array(image)
-        noise = np.random.normal(0, 20, array_image.shape)
-        handwritten_image = np.clip(array_image + noise, 0, 255).astype(np.uint8)
+        draw.text((10, 10), str(np.random.randint(0, 10)), fill=0)  # Draw a random number (0 to 9) in black
 
         # Shift pixels randomly
         shift_x, shift_y = np.random.randint(-2, 3, 2)
+        handwritten_image = np.array(image)
         handwritten_image = np.roll(handwritten_image, shift_x, axis=1)
         handwritten_image = np.roll(handwritten_image, shift_y, axis=0)
-
-        # Apply blur
-        # handwritten_image = cv2.GaussianBlur(handwritten_image, (3, 3), 0)
 
         # Rotate image
         rotation_angle = np.random.uniform(-10, 10)
@@ -174,5 +157,7 @@ def generate_test_images(num_images=5):
     # Create DataFrame from the collected test data
     df = pd.DataFrame(test_data)
     return df
+
+
 
 
