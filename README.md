@@ -30,3 +30,32 @@ To run the application in terminal use the following commands
 **Non Programming Assingment:**
 
 [HW to Chapter 1 _Brain, Neurons, and Models_.pdf](https://github.com/Venkata-Bhargavi/Neural_Networks/files/13981044/HW.to.Chapter.1._Brain.Neurons.and.Models_.pdf)
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## **HW to Chapter - 3 The Perceptron for Logistic Regression**
+
+
+Code available in branch - "develop_HW3_perceptron_train"
+
+To execute the program
+
+- `pip install -r requirements.txt`
+
+- Run `python dataset_preparation.py` for creating train and test datasets
+
+- Run `python main.py` for initializing perceptron and produting validation and test results
+
+
+**Output:**
+
+<img width="792" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/d0c0db40-186c-4f7d-98f9-d4f28fb37b2c">
+<img width="1231" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/ae88f195-e1a6-4d5a-8b14-fdeebb14f33d">
+<img width="1134" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/1776ccf1-fded-4fd2-8172-223eb5090d1f">
+<img width="986" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/196916ad-b6c3-42b4-96a8-cf1bde0e5751">
+<img width="698" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/2b730dee-8c8f-4a34-87e7-eeb50d9eaa10">
