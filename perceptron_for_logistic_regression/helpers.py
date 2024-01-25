@@ -14,6 +14,8 @@ class Perceptron:
         self.weights = np.random.randn(self.input_size, 10)
         self.bias = np.random.randn(10)
 
+    def sigmoid(self, x):
+        return 1 / (1 + np.exp(-x))
 
     def softmax(self, x):
         # If input is one-dimensional, convert it to a column vector
@@ -24,7 +26,7 @@ class Perceptron:
 
     def forward_propagation(self, inputs):
         weighted_sum = np.dot(inputs, self.weights) + self.bias
-        output = self.softmax(weighted_sum)
+        output = self.sigmoid(weighted_sum)
         return output
 
     def calculate_loss(self, predicted, target):
@@ -32,10 +34,18 @@ class Perceptron:
         return -np.mean(target * np.log(predicted))
 
 
+    # def calculate_gradient(self, inputs, output, target):
+    #     error = output - target
+    #     if len(inputs.shape) == 1:  # If inputs are 1D, reshape to 2D array
+    #         inputs = inputs.reshape(1, -1)
+    #     d_weights = np.dot(inputs.T, error)
+    #     d_bias = np.sum(error, axis=0)
+    #     return d_weights, d_bias
+
     def calculate_gradient(self, inputs, output, target):
         error = output - target
-        if len(inputs.shape) == 1:  # If inputs are 1D, reshape to 2D array
-            inputs = inputs.reshape(1, -1)
+        inputs = inputs.reshape(1, -1)  # Reshape inputs to (1, input_size)
+        error = error.reshape(1, -1)  # Reshape error to (1, 10)
         d_weights = np.dot(inputs.T, error)
         d_bias = np.sum(error, axis=0)
         return d_weights, d_bias
