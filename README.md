@@ -69,3 +69,67 @@ To execute the program
 <img width="1134" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/1776ccf1-fded-4fd2-8172-223eb5090d1f">
 <img width="986" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/196916ad-b6c3-42b4-96a8-cf1bde0e5751">
 <img width="698" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/2b730dee-8c8f-4a34-87e7-eeb50d9eaa10">
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## **HW to Chapter - 4,5 Neural Network With One Hidden Layer**
+
+Why do we need hidden layers when a perceptron with direct input and output can give us predictions?
+
+Hidden layers in neural networks enable the learning of complex patterns and relationships within data by transforming inputs through nonlinear functions, facilitating the network's ability to generalize and make accurate predictions beyond simple linear mappings. They act as intermediate computational units that extract and process features from the input data, allowing for hierarchical representation learning and the modeling of intricate data structures.
+
+Code available in branch -- `develop_HW_4_5_one_hidden_layer`
+
+**Details:**
+
+All code files are available in the directory `Neural_Network_One_Hidden_Layer`
+
+`helpers.py` : Class for Activation functions and weights initializations including forward and backward propogations
+`main.py` : Example input and output to train neural network
+
+To execute the program
+
+- `pip install -r requirements.txt`
+
+- Run `python main.py` for initializing weights and training network
+  
+
+**Example 1:**
+
+For input weights
+
+X = np.array([[2, 3], [1, 2], [3, 2], [2, 1]]) # 4 data points with 2 features
+
+y = np.array([[0], [0], [1], [1]]) # (4,1) ------ 4 target outputs
+
+**Note:**
+- epochs=**1000**
+- learning_rate=**0.1**
+- activation=**sigmoid**
+
+Output:
+
+<img width="836" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/8b4dd58b-82dc-4602-930a-9af2f1975b0e">
+
+
+
+
+**Example 2:**
+
+For input weights 
+
+X = np.array([[2, 3, 1, 4], [1, 2, 3, 4], [3, 2, 1, 4]])  # Input data (3 samples, 4 features)
+
+y = np.array([[0], [1], [1]])                            # Output data (3 samples, 1 output)
+
+
+**Note:**
+- epochs=**1000**
+- learning_rate=**0.1**
+- activation=**sigmoid**
+
+Output:
+
+<img width="937" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/8c58a541-f4f1-471d-837f-9385946461d1">
+
