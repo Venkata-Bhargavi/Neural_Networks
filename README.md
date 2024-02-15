@@ -133,3 +133,45 @@ Output:
 
 <img width="937" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/8c58a541-f4f1-471d-837f-9385946461d1">
 
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## **HW to Chapters 6  “Deep Neural Networks” & and 7 "Activation Functions"**
+
+Deep Neural Network and Activation functions
+
+Code available in branch -- "Deep_NN_&Activation_Functions"
+
+**Details:**  
+
+- network_classes.py : All classes for intializing parameters till forward propogation for depp neural network are available 
+- main.py : Contains example input execution code
+- back_prop.py : Contains back propogation function for layer to update weights and improve performance
+
+To execute the program:
+
+- `pip install -r requirements.txt`
+
+- Run `python main.py` for running a example with required parameters
+
+
+**Example: **
+
+For the following parameters
+
+input_dimensions = 2
+
+num_of_samples = 10
+
+hidden_layer_sizes = [3, 4]  # Two hidden layers with 3 and 4 neurons respectively
+
+output_size = 1  #no of neurons in output layer
+
+activation_types = ["relu", "sigmoid"]  # Activation functions for each layer
+
+
+gives the following output:
+
+<img width="950" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/df339bbd-e9c3-4ebd-9e1e-4ee85b5e5918">
+
+
