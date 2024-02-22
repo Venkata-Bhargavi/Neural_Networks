@@ -175,3 +175,22 @@ gives the following output:
 <img width="950" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/df339bbd-e9c3-4ebd-9e1e-4ee85b5e5918">
 
 
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## HW to Chapter 8 "Parameter Initialization and Training Sets"
+
+Code Available in branch -- "training_datasets_develop"
+
+**Details:**
+
+- data_preparation_open_source.py: Creates train, test, val datasets from MNIST dataset, contains respective classes and functions
+- data_prep_open_source.ipynb: Contains functions related to preparing open source data, can comfortably run in Google colab as libraries might raise compatibility issues on mac
+- data_preparation_custom.py: Prepares custom image dataset with 70,20,10 images for train, test and val sets respectively, contains required classes and functions
+
+  To execute the program:
+  
+- `pip install -r requirements.txt`
+- `python data_preparation_custom.py` in terminal
+
+Creates a folder named "data_open_source" with nested folders for train, test and val sets
+  
