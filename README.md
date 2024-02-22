@@ -194,3 +194,22 @@ Code Available in branch -- "training_datasets_develop"
 
 Creates a folder named "data_open_source" with nested folders for train, test and val sets
   
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## HW to Chapter 9 "Fitting, Bias, Regularization, and Dropout"
+
+Code Available in branch -- "bias_regularization_and_dropout"
+
+**Details:**
+
+- network_classes.py: Contains all classes for forward propogation including drop out and regularization
+  
+- main.py: example input to runt the forward pass
+
+  To execute the program:
+
+- `pip install -r requirements.txt`
+
+- Run `python main.py` for running a example with required parameters
+
