@@ -213,3 +213,37 @@ Code Available in branch -- "bias_regularization_and_dropout"
 
 - Run `python main.py` for running a example with required parameters
 
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## HW to Chapter 10 “Normalization and Optimization Methods
+
+Code available in branch -- "input_normalization"
+
+- network_classes.py has fucntions and classes related to normalization techniques
+  
+- main.py  user can chose the type of normalization technique they want to use in the forward pass
+
+  To execute the program:
+
+- `pip install -r requirements.txt`
+
+- Run `python main.py` for running a example
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## HW to Chapter 11 Learning Rates Decay and Hyperparameters
+Code available in branch -- "Mini-batch"
+
+**Details:**
+
+- network_classes.py has classes related to mini batch process in forward pass
+
+- main.py to simulate the process
+
+   To execute the program:
+
+- `pip install -r requirements.txt`
+
+- Run `python main.py` for running a example 
