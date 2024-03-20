@@ -246,4 +246,23 @@ Code available in branch -- "Mini-batch"
 
 - `pip install -r requirements.txt`
 
-- Run `python main.py` for running a example 
+- Run `python main.py` for running a example
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+## HW to Chapter 12 “Softmax”
+Code available in branch -- "Softmax"
+
+**Details:**
+
+- Activation_Classes.py: Contains softmax activation function and forward pass in neural network
+  
+- main.py: Simulation of Softmax Activation function with small input
+
+   To execute the program:
+
+- `pip install -r requirements.txt`
+
+- Run `python main.py` for running a example
+
+  ![image](https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/ee60e6fa-c2d4-4a35-971b-7f59c7b6e0a2)
