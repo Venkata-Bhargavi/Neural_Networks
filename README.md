@@ -266,3 +266,24 @@ Code available in branch -- "Softmax"
 - Run `python main.py` for running a example
 
   ![image](https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/ee60e6fa-c2d4-4a35-971b-7f59c7b6e0a2)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+## HW to Chapter 13 “Convolution Layer”
+Code available in branch -- "CNN"
+
+**Details:**
+
+- convolution_layer.py: contains class with function performing convolution calculation, user can define input image matrix and kernel in main function
+
+   To execute the program:
+
+- `pip install -r requirements.txt`
+
+- Run `python convolution_layer.py` for running a example
+
+  ![image](https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/83d1ad17-4941-42e6-9880-2d0ad49bab55)
+
+
