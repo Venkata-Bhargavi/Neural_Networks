@@ -287,3 +287,34 @@ Code available in branch -- "CNN"
   ![image](https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/83d1ad17-4941-42e6-9880-2d0ad49bab55)
 
 
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+## HW to Chapter 15 "More convolutions, transfer learning
+Code available in branch -- "Depth_Wise_CNN"
+
+
+**Details:**
+
+- Convolution_classes.py : classes for both depth wise and point wise convolution
+- main.py : User can initialize image and choose between depth_wise and point_wise to calculate and visualize
+
+  To execute the program:
+
+- `pip install -r requirements.txt`
+
+- Run `python main.py` for running a example
+
+  **outputs**:
+
+  Depth Wise :
+
+  ![image](https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/e7e96ff3-47ca-4921-9df9-351678eb8ff1)
+
+  <img width="895" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/8fd38f6e-6c05-4861-a053-9b851160f2ba">
+
+
+  Point Wise:
+
+  <img width="944" alt="image" src="https://github.com/Venkata-Bhargavi/Neural_Networks/assets/114631063/7d8e95f3-778a-4bd7-972d-55ecfe847783">
+
